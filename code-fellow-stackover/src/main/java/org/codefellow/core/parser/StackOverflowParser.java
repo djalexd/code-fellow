@@ -42,6 +42,7 @@ public class StackOverflowParser {
                 JSONObject item = (JSONObject)items.get(0);
                 String title = (String)item.get("title");
                 String link = (String)item.get("link");
+                link="https://github.com/"+link;
                 JSONArray tags = (JSONArray) item.get("tags");
 
                 String body = "";
