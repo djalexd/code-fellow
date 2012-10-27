@@ -10,6 +10,7 @@
     <modules>
         <module>code-fellow-core</module>
         <module>code-fellow-webapp</module>
+        <module>code-fellow-git</module>
     </modules>
     <packaging>pom</packaging>
 
