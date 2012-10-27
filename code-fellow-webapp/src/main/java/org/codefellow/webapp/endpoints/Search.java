@@ -1,11 +1,15 @@
 package org.codefellow.webapp.endpoints;
 
+import org.codefellow.core.SearchResult;
+import org.codefellow.core.search.ISearchableManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 /**
  * @author Alex Dobjanschi
@@ -16,8 +20,11 @@ import javax.ws.rs.core.MediaType;
 @Produces({MediaType.APPLICATION_JSON})
 public class Search {
 
+    @Autowired
+    ISearchableManager manager;
+
     @GET
-    public String doSearch() {
-        return "test";
+    public List<SearchResult> doSearch(String query) {
+        return manager.search(query, "github.com");
     }
 }
