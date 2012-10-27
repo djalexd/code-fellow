@@ -51,7 +51,7 @@ public class GitParser {
             Elements body = element.select(".description");
             Elements link = element.getElementsByTag("a");
 
-            result.add(new GitSearchResult(title.toString(), body.toString(), link.toString()));
+            result.add(new GitSearchResult(title.text(), body.text(), link.toString()));
         }
         return result;
     }
