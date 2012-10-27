@@ -50,7 +50,7 @@ public class GitParser {
             Elements title = element.select(".title");
             Elements body = element.select(".description");
             Elements link = element.getElementsByTag("a");
-            String slink="https://github.com/"+link.toString();
+            String slink="<a href=\"https://github.com"+link.attr("href")+"\">"+link.text()+"</a>";
             result.add(new GitSearchResult(title.text(), body.text(), slink));
         }
         return result;
