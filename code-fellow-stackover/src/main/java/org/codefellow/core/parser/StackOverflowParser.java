@@ -40,7 +40,6 @@ public class StackOverflowParser {
             int total = items.length();
             for(int i=0;i<total;i++){
                 JSONObject item = (JSONObject)items.get(0);
-                System.out.println("item = " + item);
                 String title = (String)item.get("title");
                 String link = (String)item.get("link");
                 JSONArray tags = (JSONArray) item.get("tags");
