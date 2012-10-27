@@ -6,6 +6,7 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
+            classpath:rest-context.xml
 <!--
             classpath:dao-hibernate.xml
             classpath:business-logic.xml

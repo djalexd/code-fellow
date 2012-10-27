@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class Search {
     ISearchableManager manager;
 
     @GET
-    public List<SearchResult> doSearch(String query) {
+    public List<SearchResult> doSearch(@QueryParam("query") final String query) {
         return manager.search(query, "github.com");
     }
 }

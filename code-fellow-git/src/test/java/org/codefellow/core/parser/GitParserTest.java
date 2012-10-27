@@ -39,7 +39,7 @@ public class GitParserTest extends TestCase {
      * @throws Exception when test fails
      */
     public void testParse() throws Exception {
-        GitSearch searcher = new GitSearch(new DiskFetcher("GitSearchSample.html"));
+        GitSearch searcher = new GitSearch(new DiskFetcher("GitSearchSample.html"), "github.com");
         List<Tag> tags = new ArrayList<Tag>();
         tags.add(new TextTag("test", "test"));
 
@@ -55,7 +55,7 @@ public class GitParserTest extends TestCase {
      * @throws Exception when test fails
      */
     public void testParseOnline() throws Exception {
-        GitSearch searcher = new GitSearch(new OnlineFetcher());
+        GitSearch searcher = new GitSearch(new OnlineFetcher(), "github.com");
         List<Tag> tags = new ArrayList<Tag>();
         tags.add(new TextTag("test", "test"));
 
