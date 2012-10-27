@@ -118,6 +118,12 @@
                 <configuration>
                     <skip>false</skip>
                     <contextPath>${build.finalName}</contextPath>
+                    <connectors>
+                        <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+                            <port>9100</port>
+                            <maxIdleTime>60000</maxIdleTime>
+                        </connector>
+                    </connectors>
                 </configuration>
             </plugin>
 
