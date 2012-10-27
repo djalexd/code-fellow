@@ -39,7 +39,7 @@ public class StackOverflowSearchTest extends TestCase {
      * @throws Exception when test fails
      */
     public void testParse() throws Exception {
-        StackOverflowSearch searcher = new StackOverflowSearch(new DiskFetcher("StackOverflowSample.json"));
+        StackOverflowSearch searcher = new StackOverflowSearch(new DiskFetcher("StackOverflowSample.json"), "stackoverflow.com");
         List<Tag> tags = new ArrayList<Tag>();
         tags.add(new TextTag("test", "test"));
 
@@ -54,7 +54,7 @@ public class StackOverflowSearchTest extends TestCase {
      * @throws Exception when test fails
      */
     public void testParseOnline() throws Exception {
-        StackOverflowSearch searcher = new StackOverflowSearch(new OnlineFetcher());
+        StackOverflowSearch searcher = new StackOverflowSearch(new OnlineFetcher(), "stackoverflow.com");
         List<Tag> tags = new ArrayList<Tag>();
         tags.add(new TextTag("test", "test"));
 

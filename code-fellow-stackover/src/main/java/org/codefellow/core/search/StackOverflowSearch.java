@@ -28,19 +28,26 @@ import java.util.List;
  * @author abserban
  * @since 2012
  */
-public class StackOverflowSearch implements Searchable {
+public class StackOverflowSearch implements ListableSearcheable {
     /**
      * page reader
      */
     private Fetcher fetcher = null;
+    private final String serviceName;
 
     /**
      * Constructs a stackoverflow.com searcher based on the engine specified
      *
      * @param fetcher can be online or disk fetcher
      */
-    public StackOverflowSearch(Fetcher fetcher) {
+    public StackOverflowSearch(Fetcher fetcher, String serviceName) {
         this.fetcher = fetcher;
+        this.serviceName = serviceName;
+    }
+
+    @Override
+    public String getServiceName() {
+        return this.serviceName;
     }
 
     /**
