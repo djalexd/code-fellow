@@ -57,7 +57,6 @@ public class MavenCentralSearch implements Searchable {
                 SearchResult searchResult = new MavenCentralSearchResult(artifactId, groupId, version, updatedTimestamp);
                 searchResultList.add(searchResult);
             }
-            responseArray.getString(1);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
