@@ -30,17 +30,24 @@ import java.util.List;
  * @author abserban
  * @since 2012
  */
-public class GitSearch implements Searchable {
+public class GitSearch implements ListableSearcheable {
 
     private Fetcher fetcher = null;
+    private final String serviceName;
 
     /**
      * Constructs a Github searcher based on the engine specified
      *
      * @param fetcher can be online or disk fetcher
      */
-    public GitSearch(Fetcher fetcher) {
+    public GitSearch(Fetcher fetcher, String serviceName) {
         this.fetcher = fetcher;
+        this.serviceName = serviceName;
+    }
+
+    @Override
+    public String getServiceName() {
+        return this.serviceName;
     }
 
     /**
