@@ -12,6 +12,7 @@
         <module>code-fellow-webapp</module>
         <module>code-fellow-git</module>
         <module>code-fellow-stackover</module>
+        <module>search-maven</module>
     </modules>
     <packaging>pom</packaging>
 
