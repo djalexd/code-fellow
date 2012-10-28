@@ -1,16 +1,21 @@
 package org.codefellow.webapp.endpoints;
 
+import com.google.common.base.Function;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import org.codefellow.core.SearchResult;
-import org.codefellow.core.search.ISearchableManager;
+import org.codefellow.core.search.IListableSearchableManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.annotation.Nullable;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Alex Dobjanschi
@@ -21,11 +26,44 @@ import java.util.List;
 @Produces({MediaType.APPLICATION_JSON})
 public class Search {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(Search.class);
+
     @Autowired
-    ISearchableManager manager;
+    IListableSearchableManager manager;
 
     @GET
-    public List<SearchResult> doSearch(@QueryParam("query") final String query) {
-        return manager.search(query, "github.com");
+    public Map<String, SearchResultMappedByService> doSearch(@QueryParam("query") final String query,
+                                                @QueryParam("service") @DefaultValue("*") final String service) {
+
+        if (service.equals("*")) {
+            // Use a list to accumulate results.
+            final List<SearchResultMappedByService> mappedResults =
+                    Lists.newArrayListWithExpectedSize(manager.getAvailableServices().size());
+
+            // Search on all available services.
+            for (String oneService : manager.getAvailableServices()) {
+
+                try {
+                    List<SearchResult> resultsForAService = manager.search(query, oneService);
+                    mappedResults.add(new SearchResultMappedByService(resultsForAService, oneService));
+                } catch (Throwable t) {
+                    LOGGER.error("Search is not available for service {}", oneService, t);
+                    // Don't add anything for the service.
+                }
+
+            }
+
+            return Maps.uniqueIndex(mappedResults, new Function<SearchResultMappedByService, String>() {
+                @Override
+                public String apply(@Nullable SearchResultMappedByService input) {
+                    return input.getServiceName();
+                }
+            });
+
+        } else {
+            // Search on a particular service.
+            return ImmutableMap.of(service,
+                    new SearchResultMappedByService(manager.search(query, service), service));
+        }
     }
 }

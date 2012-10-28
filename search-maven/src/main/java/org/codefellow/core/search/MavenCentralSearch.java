@@ -24,13 +24,24 @@ import java.util.List;
  * Time: 11:14 PM
  * To change this template use File | Settings | File Templates.
  */
-public class MavenCentralSearch implements Searchable {
+public class MavenCentralSearch implements ListableSearcheable {
 
     private final Logger logger = LoggerFactory.getLogger(MavenCentralSearch.class);
 
 
     public static final String MAVEN_CENTRAL_SEARCH_URI_PRE = "http://search.maven.org/solrsearch/select?q=";
     public static final String MAVEN_CENTRAL_SEARCH_URI_POST = "&rows=20&wt=json";
+
+    private final String serviceName;
+
+    public MavenCentralSearch(String serviceName) {
+        this.serviceName = serviceName;
+    }
+
+    @Override
+    public String getServiceName() {
+        return this.serviceName;
+    }
 
     @Override
     public List<SearchResult> search(List<Tag> tags) {
@@ -123,6 +134,7 @@ public class MavenCentralSearch implements Searchable {
     }
 
 
+/*
     public static void main(String[] args) {
         System.out.println("start...");
         List<SearchResult> sr = new MavenCentralSearch().search(Arrays.asList(new Tag[]{new TagImpl()}));
@@ -141,4 +153,5 @@ public class MavenCentralSearch implements Searchable {
         }
     }
 
+*/
 }

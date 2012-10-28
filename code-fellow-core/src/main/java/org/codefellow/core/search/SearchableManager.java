@@ -2,6 +2,7 @@ package org.codefellow.core.search;
 
 import com.google.common.base.Function;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
 import org.codefellow.core.ListTagParser;
 import org.codefellow.core.SearchResult;
@@ -17,7 +18,7 @@ import java.util.Map;
  * @author Alex Dobjanschi
  * @since 10/27/12 5:25 PM
  */
-public class SearchableManager implements ISearchableManager {
+public class SearchableManager implements IListableSearchableManager {
 
     private static final String NO_SEARCHABLE_NAME = "No Searchable found for specified name %s";
 
@@ -47,6 +48,11 @@ public class SearchableManager implements ISearchableManager {
 
         final Searchable searchable = getSearchableByName(searchableName);
         return searchable.search(parsedTags);
+    }
+
+    @Override
+    public ImmutableSet<String> getAvailableServices() {
+        return ImmutableSet.copyOf(searchableMap.keySet());
     }
 
     private Searchable getSearchableByName(String searchableName) {

@@ -7,10 +7,28 @@ function performSearch(query) {
         data: "query=" + query,
         dataType: "json",
         success: function(data, status, xhr) {
-            // dispatch
-            getTemplateAjax('templates/github.handlebars', function(template) {
-                $("#githubSearchResults").html(template({"results" : data}));
-            });
+
+            if (data.github) {
+                // dispatch
+                getTemplateAjax('templates/github.handlebars', function(template) {
+                    $("#githubSearchResults").html(template(data.github));
+                });
+            }
+
+            if (data.stackoverflow) {
+                // dispatch
+                getTemplateAjax('templates/stackoverflow.handlebars', function(template) {
+                    $("#stackoverflowSearchResults").html(template(data.stackoverflow));
+                });
+            }
+
+
+            if (data.mavenCentral) {
+                // dispatch
+                getTemplateAjax('templates/mavenCentral.handlebars', function(template) {
+                    $("#mavenSearchResults").html(template(data.mavenCentral));
+                });
+            }
         }
     });
 }

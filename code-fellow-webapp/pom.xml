@@ -29,6 +29,16 @@
             <artifactId>code-fellow-git</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.codefellow</groupId>
+            <artifactId>code-fellow-stackover</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codefellow</groupId>
+            <artifactId>search-maven</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>javax.ws.rs</groupId>

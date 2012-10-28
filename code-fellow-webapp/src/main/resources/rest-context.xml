@@ -18,9 +18,20 @@
 
     <bean name="githubSearchable" class="org.codefellow.core.search.GitSearch">
         <constructor-arg>
-            <bean class="org.codefellow.core.search.OnlineFetcher"/>
+            <bean class="org.codefellow.core.search.GitOnlineFetcher"/>
         </constructor-arg>
-        <constructor-arg value="github.com"/>
+        <constructor-arg value="github"/>
+    </bean>
+
+    <bean name="stackOverflowSearchable" class="org.codefellow.core.search.StackOverflowSearch">
+        <constructor-arg>
+            <bean class="org.codefellow.core.search.GitOnlineFetcher"/>
+        </constructor-arg>
+        <constructor-arg value="stackoverflow"/>
+    </bean>
+
+    <bean name="mavenSearch" class="org.codefellow.core.search.MavenCentralSearch">
+        <constructor-arg value="mavenCentral"/>
     </bean>
 
 
@@ -38,6 +49,8 @@
         <constructor-arg>
             <list>
                 <ref bean="githubSearchable"/>
+                <ref bean="stackOverflowSearchable"/>
+                <ref bean="mavenSearch"/>
             </list>
         </constructor-arg>
         <constructor-arg ref="queryParser"/>
