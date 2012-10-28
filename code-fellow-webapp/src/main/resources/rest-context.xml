@@ -16,21 +16,21 @@
     xmlns:aop="http://www.springframework.org/schema/aop"
     xmlns:tx="http://www.springframework.org/schema/tx"-->
 
-    <bean name="githubSearchable" class="org.codefellow.core.search.GitSearch">
+    <bean name="githubSearchable" class="org.codefellow.core.search.git.GitSearch">
         <constructor-arg>
-            <bean class="org.codefellow.core.search.GitOnlineFetcher"/>
+            <bean class="org.codefellow.core.search.git.OnlineFetcher"/>
         </constructor-arg>
         <constructor-arg value="github"/>
     </bean>
 
-    <bean name="stackOverflowSearchable" class="org.codefellow.core.search.StackOverflowSearch">
+    <bean name="stackOverflowSearchable" class="org.codefellow.core.search.stackoverflow.StackOverflowSearch">
         <constructor-arg>
-            <bean class="org.codefellow.core.search.GitOnlineFetcher"/>
+            <bean class="org.codefellow.core.search.stackoverflow.OnlineFetcher"/>
         </constructor-arg>
         <constructor-arg value="stackoverflow"/>
     </bean>
 
-    <bean name="mavenSearch" class="org.codefellow.core.search.MavenCentralSearch">
+    <bean name="mavenSearch" class="org.codefellow.core.search.maven.MavenCentralSearch">
         <constructor-arg value="mavenCentral"/>
     </bean>
 

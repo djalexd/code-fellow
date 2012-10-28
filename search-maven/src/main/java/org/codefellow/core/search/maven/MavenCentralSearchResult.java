@@ -1,4 +1,4 @@
-package org.codefellow.core.search;
+package org.codefellow.core.search.maven;
 
 import org.codefellow.core.SearchResult;
 

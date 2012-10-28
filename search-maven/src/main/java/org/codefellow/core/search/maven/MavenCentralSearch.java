@@ -1,8 +1,9 @@
-package org.codefellow.core.search;
+package org.codefellow.core.search.maven;
 
 import org.apache.commons.io.IOUtils;
 import org.codefellow.core.SearchResult;
 import org.codefellow.core.Tag;
+import org.codefellow.core.search.ListableSearcheable;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,7 +15,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**

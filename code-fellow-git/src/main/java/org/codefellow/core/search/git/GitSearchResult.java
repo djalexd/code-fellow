@@ -13,20 +13,22 @@
  See the License for the specific language governing permissions and
  limitations under the License.
  */
-package org.codefellow.core.search;
+package org.codefellow.core.search.git;
 
 import org.codefellow.core.SearchResult;
 
 /**
+ * Search result specific to GitHub
+ *
  * @author abserban
  * @since 2012
  */
-public class StackOverflowResult implements SearchResult {
+public class GitSearchResult implements SearchResult {
     private String title;
     private String body;
     private String Uri;
 
-    public StackOverflowResult(String title, String body, String uri) {
+    public GitSearchResult(String title, String body, String uri) {
         this.title = title;
         this.body = body;
         Uri = uri;
@@ -47,4 +49,3 @@ public class StackOverflowResult implements SearchResult {
         return Uri;
     }
 }
-

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.codefellow.core.search;
+package org.codefellow.core.search.git;
 
 /**
  * Abstracts the reading of html page

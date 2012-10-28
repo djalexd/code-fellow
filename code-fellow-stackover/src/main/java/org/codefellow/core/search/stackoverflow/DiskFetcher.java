@@ -13,7 +13,7 @@
  See the License for the specific language governing permissions and
  limitations under the License.
  */
-package org.codefellow.core.search;
+package org.codefellow.core.search.stackoverflow;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,9 +27,16 @@ import java.io.InputStreamReader;
  * @since 2012
  */
 public class DiskFetcher implements Fetcher {
-
+    /**
+     * Path to the file
+     */
     private String fileName = null;
 
+    /**
+     * Creates a fetcher instance based on a file path
+     *
+     * @param fileName of the file that must be on the classpath
+     */
     public DiskFetcher(String fileName) {
         this.fileName = fileName;
     }

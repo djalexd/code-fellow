@@ -19,9 +19,9 @@ import junit.framework.TestCase;
 import org.codefellow.core.SearchResult;
 import org.codefellow.core.Tag;
 import org.codefellow.core.TextTag;
-import org.codefellow.core.search.DiskFetcher;
-import org.codefellow.core.search.OnlineFetcher;
-import org.codefellow.core.search.StackOverflowSearch;
+import org.codefellow.core.search.stackoverflow.DiskFetcher;
+import org.codefellow.core.search.stackoverflow.OnlineFetcher;
+import org.codefellow.core.search.stackoverflow.StackOverflowSearch;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -16,7 +16,7 @@
 package org.codefellow.core.parser;
 
 import org.codefellow.core.SearchResult;
-import org.codefellow.core.search.GitSearchResult;
+import org.codefellow.core.search.git.GitSearchResult;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

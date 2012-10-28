@@ -13,11 +13,12 @@
  See the License for the specific language governing permissions and
  limitations under the License.
  */
-package org.codefellow.core.search;
+package org.codefellow.core.search.stackoverflow;
 
 import org.codefellow.core.SearchResult;
 import org.codefellow.core.Tag;
 import org.codefellow.core.parser.StackOverflowParser;
+import org.codefellow.core.search.ListableSearcheable;
 
 import java.util.ArrayList;
 import java.util.List;

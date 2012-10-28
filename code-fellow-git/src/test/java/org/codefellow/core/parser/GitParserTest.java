@@ -19,9 +19,9 @@ import junit.framework.TestCase;
 import org.codefellow.core.SearchResult;
 import org.codefellow.core.Tag;
 import org.codefellow.core.TextTag;
-import org.codefellow.core.search.DiskFetcher;
-import org.codefellow.core.search.GitOnlineFetcher;
-import org.codefellow.core.search.GitSearch;
+import org.codefellow.core.search.git.DiskFetcher;
+import org.codefellow.core.search.git.OnlineFetcher;
+import org.codefellow.core.search.git.GitSearch;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +55,7 @@ public class GitParserTest extends TestCase {
      * @throws Exception when test fails
      */
     public void testParseOnline() throws Exception {
-        GitSearch searcher = new GitSearch(new GitOnlineFetcher(), "github.com");
+        GitSearch searcher = new GitSearch(new OnlineFetcher(), "github.com");
         List<Tag> tags = new ArrayList<Tag>();
         tags.add(new TextTag("test", "test"));
 

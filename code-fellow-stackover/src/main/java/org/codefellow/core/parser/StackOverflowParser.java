@@ -16,7 +16,7 @@
 package org.codefellow.core.parser;
 
 import org.codefellow.core.SearchResult;
-import org.codefellow.core.search.StackOverflowResult;
+import org.codefellow.core.search.stackoverflow.StackOverflowResult;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
