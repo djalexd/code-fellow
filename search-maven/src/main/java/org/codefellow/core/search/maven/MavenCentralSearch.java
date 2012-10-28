@@ -102,7 +102,7 @@ public class MavenCentralSearch implements ListableSearcheable {
     /**
      * performs a search into Maven Central with the given search string and converts the response into a json object
      *
-     * @param url the URL locating the search; USING GET by default
+     * @param url the URL locating the search; using GET by default
      * @return
      */
     private JSONObject performSearch(URL url) {
