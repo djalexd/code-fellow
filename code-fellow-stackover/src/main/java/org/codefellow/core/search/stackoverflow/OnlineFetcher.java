@@ -20,6 +20,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.util.zip.GZIPInputStream;
 
 /**
@@ -39,7 +40,7 @@ public class OnlineFetcher implements Fetcher {
     public StringBuffer getPage(String keywords) {
 
         try {
-            URL url = new URL("https://api.stackexchange.com/2.1/search/advanced?order=desc&sort=relevance&site=stackoverflow&body=" + keywords);
+            URL url = new URL("https://api.stackexchange.com/2.1/search/advanced?order=desc&sort=relevance&site=stackoverflow&body=" + URLEncoder.encode(keywords, "UTF-8"));
 
             URLConnection connection = url.openConnection();
             connection.setRequestProperty("Accept-Charset", "UTF-8");

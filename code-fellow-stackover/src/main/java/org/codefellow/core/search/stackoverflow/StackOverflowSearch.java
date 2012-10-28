@@ -70,7 +70,7 @@ public class StackOverflowSearch implements ListableSearcheable {
             keyword += " ";
         }
 
-        StringBuffer page = fetcher.getPage(keyword);
+        StringBuffer page = fetcher.getPage(keyword.trim());
 
         StackOverflowParser parser = new StackOverflowParser();
         return parser.parse(page);
