@@ -20,7 +20,7 @@ import java.util.List;
  * User: diseropi
  * Date: 10/28/12
  * Time: 3:49 AM
- * To change this template use File | Settings | File Templates.
+ * The search implementation for InfoQ
  */
 public class InfoQSearch implements ListableSearcheable {
 
