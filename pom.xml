@@ -6,7 +6,7 @@
 
     <groupId>org.codefellow</groupId>
     <artifactId>masterpom</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.2-SNAPSHOT</version>
     <modules>
         <module>code-fellow-core</module>
         <module>code-fellow-webapp</module>
