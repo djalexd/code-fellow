@@ -16,7 +16,8 @@
 package org.codefellow.core.parser;
 
 import org.codefellow.core.SearchResult;
-import org.codefellow.core.search.git.GitSearchResult;
+import org.codefellow.core.SimpleSearchResult;
+import org.codefellow.core.parsing.Parser;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -32,15 +33,15 @@ import java.util.List;
  * @author abserban
  * @since 2012
  */
-public class GitParser {
+public class GitParser implements Parser {
     /**
      * Parse the text from the supplied html page.
      *
      * @param page a html body of a web page
      * @return a list of search result specific to GitHub
      */
-    public List<SearchResult> parse(StringBuffer page) {
-        Document html = Jsoup.parse(page.toString());
+    public List<SearchResult> parse(String page) {
+        Document html = Jsoup.parse(page);
         Elements elements = html.select("#code_search_results");
         Elements results = elements.select(".result");
 
@@ -51,7 +52,7 @@ public class GitParser {
             Elements body = element.select(".description");
             Elements link = element.getElementsByTag("a");
             String slink="<a href=\"https://github.com"+link.attr("href")+"\">"+link.text()+"</a>";
-            result.add(new GitSearchResult(title.text(), body.text(), slink));
+            result.add(new SimpleSearchResult(title.text(), body.text(), slink));
         }
         return result;
     }

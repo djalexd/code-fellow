@@ -1,5 +1,6 @@
 package org.codefellow.core.parsing;
 
+import com.google.common.base.Preconditions;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -18,7 +19,7 @@ public abstract class AbstractHttpFetcher implements Fetcher {
 
     private final HttpClient httpClient;
     public AbstractHttpFetcher(HttpClient httpClient) {
-        this.httpClient = httpClient;
+        this.httpClient = Preconditions.checkNotNull(httpClient);
     }
 
     /**

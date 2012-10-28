@@ -5,6 +5,7 @@ import com.google.common.collect.Lists;
 import org.codefellow.core.SearchResult;
 import org.codefellow.core.Tag;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 
 /**
@@ -41,5 +42,5 @@ public abstract class AbstractListableSearchable implements ListableSearcheable 
      * @param tags
      * @return
      */
-    protected abstract List<SearchResult> doSearch(@com.sun.istack.internal.NotNull List<Tag> tags);
+    protected abstract List<SearchResult> doSearch(@Nonnull List<Tag> tags);
 }

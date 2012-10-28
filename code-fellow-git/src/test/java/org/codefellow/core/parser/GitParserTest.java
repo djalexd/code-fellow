@@ -16,12 +16,15 @@
 package org.codefellow.core.parser;
 
 import junit.framework.TestCase;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.codefellow.core.SearchResult;
 import org.codefellow.core.Tag;
 import org.codefellow.core.TextTag;
-import org.codefellow.core.search.git.DiskFetcher;
-import org.codefellow.core.search.git.OnlineFetcher;
-import org.codefellow.core.search.git.GitSearch;
+import org.codefellow.core.parsing.SimpleTagKeywordJoiner;
+import org.codefellow.core.search.DefaultListableSearchable;
+import org.codefellow.core.search.Searchable;
+import org.codefellow.core.search.git.GitFetcher;
+import org.fest.assertions.Assertions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +42,12 @@ public class GitParserTest extends TestCase {
      * @throws Exception when test fails
      */
     public void testParse() throws Exception {
-        GitSearch searcher = new GitSearch(new DiskFetcher("GitSearchSample.html"), "github.com");
+        Searchable searcher = new DefaultListableSearchable(
+                "github",
+                new SimpleTagKeywordJoiner(" "),
+                new DiskFetcher("GitSearchSample.html"),
+                new GitParser());
+
         List<Tag> tags = new ArrayList<Tag>();
         tags.add(new TextTag("test", "test"));
 
@@ -55,12 +63,16 @@ public class GitParserTest extends TestCase {
      * @throws Exception when test fails
      */
     public void testParseOnline() throws Exception {
-        GitSearch searcher = new GitSearch(new OnlineFetcher(), "github.com");
+        Searchable searcher = new DefaultListableSearchable(
+                "github",
+                new SimpleTagKeywordJoiner(" "),
+                new GitFetcher(new DefaultHttpClient()),
+                new GitParser());
         List<Tag> tags = new ArrayList<Tag>();
         tags.add(new TextTag("test", "test"));
 
         List<SearchResult> resultList = searcher.search(tags);
-        assertTrue(resultList.size() > 0);
+        Assertions.assertThat(resultList).isNotEmpty();
 
     }
 

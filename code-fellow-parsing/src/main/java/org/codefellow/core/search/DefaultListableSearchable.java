@@ -1,12 +1,12 @@
 package org.codefellow.core.search;
 
-import com.sun.istack.internal.NotNull;
 import org.codefellow.core.SearchResult;
 import org.codefellow.core.Tag;
 import org.codefellow.core.parsing.Fetcher;
 import org.codefellow.core.parsing.Parser;
 import org.codefellow.core.parsing.TagKeywordJoiner;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 
 /**
@@ -30,7 +30,7 @@ public class DefaultListableSearchable extends AbstractListableSearchable {
     }
 
     @Override
-    protected List<SearchResult> doSearch(@NotNull List<Tag> tags) {
+    protected List<SearchResult> doSearch(@Nonnull List<Tag> tags) {
         // Use the joiner to construct a unified representation of the
         // specified list of tags.
         final String keyword = this.joiner.joinTags(tags);

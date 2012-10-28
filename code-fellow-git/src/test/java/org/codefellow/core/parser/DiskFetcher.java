@@ -13,7 +13,9 @@
  See the License for the specific language governing permissions and
  limitations under the License.
  */
-package org.codefellow.core.search.git;
+package org.codefellow.core.parser;
+
+import org.codefellow.core.parsing.Fetcher;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -41,7 +43,7 @@ public class DiskFetcher implements Fetcher {
      * @return a StringBuffer containing the file content.
      */
     @Override
-    public StringBuffer getPage(String keyword) {
+    public String getPage(String keyword) {
         InputStream htmlDoc = getClass().getClassLoader().getResourceAsStream(fileName);
         BufferedReader reader = new BufferedReader(new InputStreamReader(htmlDoc));
         StringBuffer page = new StringBuffer();
@@ -54,6 +56,6 @@ public class DiskFetcher implements Fetcher {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return page;
+        return page.toString();
     }
 }

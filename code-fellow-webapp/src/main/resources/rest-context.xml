@@ -18,7 +18,7 @@
 
     <bean name="githubSearchable" class="org.codefellow.core.search.git.GitSearch">
         <constructor-arg>
-            <bean class="org.codefellow.core.search.git.OnlineFetcher"/>
+            <bean class="org.codefellow.core.search.git.GitFetcher"/>
         </constructor-arg>
         <constructor-arg value="github"/>
     </bean>

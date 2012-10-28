@@ -1,8 +1,11 @@
 package org.codefellow.core.parsing;
 
+import com.google.common.base.Function;
 import com.google.common.base.Joiner;
+import com.google.common.collect.Collections2;
 import org.codefellow.core.Tag;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 /**
@@ -19,6 +22,11 @@ public class SimpleTagKeywordJoiner implements TagKeywordJoiner {
     @Override
     public String joinTags(List<Tag> tags) {
         // TODO Not check for null.
-        return this.joiner.join(tags);
+        return this.joiner.join(Collections2.transform(tags, new Function<Tag, String>() {
+            @Override
+            public String apply(@Nullable Tag input) {
+                return input.getValue();
+            }
+        }));
     }
 }

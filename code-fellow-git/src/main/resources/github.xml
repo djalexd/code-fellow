@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean name="gitParser" class="org.codefellow.core.parser.GitParser" />
+
+    <bean name="gitFetcher" class="org.codefellow.core.search.git.GitFetcher">
+        <constructor-arg ref="fetchHttpClient"/>
+    </bean>
+
+    <bean name="gitSearchService" class="org.codefellow.core.search.DefaultListableSearchable">
+        <constructor-arg value="github"/>
+        <constructor-arg ref="keywordJoiner"/>
+        <constructor-arg ref="gitFetcher"/>
+        <constructor-arg ref="gitParser"/>
+    </bean>
+
+</beans>
