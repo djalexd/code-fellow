@@ -77,7 +77,7 @@ public class MavenCentralSearch implements ListableSearcheable {
     }
 
     /**
-     * Builds a SearchResult object from the correspondind json object
+     * Builds a SearchResult object from the corresponding json object
      * @param jsonObject
      * @return
      */
@@ -95,7 +95,7 @@ public class MavenCentralSearch implements ListableSearcheable {
     }
 
     /**
-     * builds the search url from the basea search address and the escaped query string
+     * builds the search url from the base search address and the escaped query string
      *
      * @param searchString
      * @return
@@ -159,25 +159,4 @@ public class MavenCentralSearch implements ListableSearcheable {
         return stringBuilder.toString().trim(); //remove the trailing space
     }
 
-
-/*
-    public static void main(String[] args) {
-        System.out.println("start...");
-        List<SearchResult> sr = new MavenCentralSearch().search(Arrays.asList(new Tag[]{new TagImpl()}));
-        System.out.println();
-    }
-
-    static class TagImpl implements Tag {
-        @Override
-        public String getOriginalValue() {
-            return null;  //To change body of implemented methods use File | Settings | File Templates.
-        }
-
-        @Override
-        public String getValue() {
-            return "spring core";  //To change body of implemented methods use File | Settings | File Templates.
-        }
-    }
-
-*/
 }
