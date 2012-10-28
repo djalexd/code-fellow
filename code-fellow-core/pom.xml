@@ -12,24 +12,15 @@
     <artifactId>code-fellow-core</artifactId>
 
     <licenses>
-      <license>
-        <name>The Apache Software License, Version 2.0</name>
-        <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-        <distribution>repo</distribution>
-        <comments>CodeFellow dudes</comments>
-      </license>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>CodeFellow dudes</comments>
+        </license>
     </licenses>
     <dependencies>
-    <dependency>
-    	<groupId>edu.uci.ics</groupId>
-    	<artifactId>crawler4j</artifactId>
-    	<version>3.4</version>
-    </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.8.2</version>
-        </dependency>
+
     </dependencies>
 
 </project>
