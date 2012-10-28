@@ -18,9 +18,8 @@ package org.codefellow.core.search.git;
 import org.codefellow.core.SearchResult;
 import org.codefellow.core.Tag;
 import org.codefellow.core.parser.GitParser;
-import org.codefellow.core.search.ListableSearcheable;
+import org.codefellow.core.search.AbstractListableSearchable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,10 +30,8 @@ import java.util.List;
  * @author abserban
  * @since 2012
  */
-public class GitSearch implements ListableSearcheable {
-
-    private Fetcher fetcher = null;
-    private final String serviceName;
+public class GitSearch extends AbstractListableSearchable {
+    private final Fetcher fetcher;
 
     /**
      * Constructs a Github searcher based on the engine specified
@@ -42,26 +39,19 @@ public class GitSearch implements ListableSearcheable {
      * @param fetcher can be online or disk fetcher
      */
     public GitSearch(Fetcher fetcher, String serviceName) {
+        super(serviceName);
         this.fetcher = fetcher;
-        this.serviceName = serviceName;
-    }
-
-    @Override
-    public String getServiceName() {
-        return this.serviceName;
     }
 
     /**
      * Searches projects on github.com based on keywords
      *
+     *
      * @param tags keywords to be used for searching
      * @return a list of search results
      */
     @Override
-    public List<SearchResult> search(List<Tag> tags) {
-        if (tags == null || tags.size() == 0) {
-            return new ArrayList<SearchResult>();
-        }
+    protected List<SearchResult> doSearch(List<Tag> tags) {
         String keyword = "";
 
         for (Tag tag : tags) {

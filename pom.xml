@@ -13,6 +13,7 @@
         <module>code-fellow-git</module>
         <module>code-fellow-stackover</module>
         <module>search-maven</module>
+        <module>code-fellow-parsing</module>
     </modules>
     <packaging>pom</packaging>
 
