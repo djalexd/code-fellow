@@ -13,7 +13,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -32,7 +31,7 @@ public class InfoQSearch implements ListableSearcheable {
 
     private String serviceName;
 
-    public InfoQSearch(final String serviceName){
+    public InfoQSearch(final String serviceName) {
         this.serviceName = serviceName;
     }
 
@@ -96,25 +95,5 @@ public class InfoQSearch implements ListableSearcheable {
         }
         return result;
     }
-
-        public static void main(String[] args) {
-            System.out.println("start...");
-            List<SearchResult> sr = new InfoQSearch("infoqSearch").search(Arrays.asList(new Tag[]{new TagImpl()}));
-            System.out.println();
-        }
-
-        static class TagImpl implements Tag {
-            @Override
-            public String getOriginalValue() {
-                return null;  //To change body of implemented methods use File | Settings | File Templates.
-            }
-
-            @Override
-            public String getValue() {
-                return "akka";  //To change body of implemented methods use File | Settings | File Templates.
-            }
-        }
-
-
 
 }
