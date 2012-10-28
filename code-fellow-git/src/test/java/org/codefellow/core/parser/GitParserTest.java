@@ -63,5 +63,14 @@ public class GitParserTest extends TestCase {
         assertTrue(resultList.size() > 0);
 
     }
+    public void testParseOnline2Keywords() throws Exception {
+        GitSearch searcher = new GitSearch(new OnlineFetcher(), "github.com");
+        List<Tag> tags = new ArrayList<Tag>();
+        tags.add(new TextTag("akka test", "akka test"));
+
+        List<SearchResult> resultList = searcher.search(tags);
+        assertTrue(resultList.size() > 0);
+
+    }
 
 }

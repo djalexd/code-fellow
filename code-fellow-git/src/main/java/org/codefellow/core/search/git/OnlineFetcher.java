@@ -15,6 +15,8 @@
  */
 package org.codefellow.core.search.git;
 
+import java.net.URLEncoder;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -38,7 +40,7 @@ public class OnlineFetcher implements Fetcher {
     public StringBuffer getPage(String keywords) {
 
         try {
-            URL url = new URL("https://github.com/search?utf8=%E2%9C%93&type=Everything&repo=&langOverride=&start_value=1" + "&q=" + keywords);
+            URL url = new URL("https://github.com/search?utf8=%E2%9C%93&type=Everything&repo=&langOverride=&start_value=1" + "&q=" + URLEncoder.encode(keywords, "UTF-8"));
 
             URLConnection connection = url.openConnection();
 
