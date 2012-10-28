@@ -10,7 +10,8 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -22,7 +23,8 @@ import java.util.List;
  * User: diseropi
  * Date: 10/27/12
  * Time: 11:14 PM
- * To change this template use File | Settings | File Templates.
+ * The search implementation for MavenCentral site.
+ * This class extracts groupId, artifactId, version and timestamp from the response of a search performaed in MavenCentral.
  */
 public class MavenCentralSearch implements ListableSearcheable {
 
@@ -53,25 +55,43 @@ public class MavenCentralSearch implements ListableSearcheable {
         return resultList;
     }
 
+    /**
+     * Bilds the List of SearchResult objects from the JSON array received as response from search
+     * @param jsonResponse
+     * @return the search result list
+     */
     private List<SearchResult> buildSearchResultList(JSONObject jsonResponse) {
         List<SearchResult> searchResultList = new ArrayList<SearchResult>();
 
         try {
             JSONArray responseArray = jsonResponse.getJSONObject("response").getJSONArray("docs");
-
             for (int i = 0; i < jsonResponse.length(); i++) {
                 JSONObject jsonObject = responseArray.getJSONObject(i);
-                String artifactId = jsonObject.getString("a");
-                String groupId = jsonObject.getString("g");
-                String version = jsonObject.getString("latestVersion");
-                String updatedTimestamp = jsonObject.getString("timestamp");
-                SearchResult searchResult = new MavenCentralSearchResult(artifactId, groupId, version, updatedTimestamp);
+                SearchResult searchResult = buildSearchResult(jsonObject);
                 searchResultList.add(searchResult);
             }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        } catch (JSONException e) {
+            throw new RuntimeException("Error creating the search result list from the json array response", e);
         }
         return searchResultList;
+    }
+
+    /**
+     * Builds a SearchResult object from the correspondind json object
+     * @param jsonObject
+     * @return
+     */
+    private SearchResult buildSearchResult(JSONObject jsonObject) {
+        try {
+            String artifactId = jsonObject.getString("a");
+            String groupId = jsonObject.getString("g");
+            String version = jsonObject.getString("latestVersion");
+            String updatedTimestamp = jsonObject.getString("timestamp");
+            SearchResult searchResult = new MavenCentralSearchResult(artifactId, groupId, version, updatedTimestamp);
+            return searchResult;
+        } catch (JSONException e) {
+            throw new RuntimeException("Failed to create a search result from the json object", e);
+        }
     }
 
     /**
@@ -89,6 +109,12 @@ public class MavenCentralSearch implements ListableSearcheable {
         }
     }
 
+    /**
+     * tryes to escape the search string; if escape is not possible returns the original string
+     *
+     * @param searchString
+     * @return escaped string or the original if escaping failed
+     */
     private String escape(String searchString) {
         String result = searchString;
         try {
